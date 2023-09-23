@@ -114,3 +114,57 @@ s.printDetails()
 f = Faculty('Dr. Suresh', 31, 11234, 'EEE', 'DCE')
 f.printDetails()
 
+
+
+
+# call method of a particular class from child class :
+class A :
+    def method1(self) :
+        print("A class method1")
+
+class B(A) :
+    def method1(self) :
+        print('B class method1')
+
+class C(A) :
+    def method1(self) :
+        print('C class method1')
+        A.method1(self)
+
+class D(B,C) :
+    def method1(self) :
+        print('D class method1')
+        B.method1(self)    #calling method1() of B class
+        #A.method1(self)
+
+d = D()
+d.method1()
+
+c = C()
+c.method1()
+
+
+# OR,
+class A :
+    def method1(self) :
+        print("A class method1")
+
+class B(A) :
+    def method1(self) :
+        print('B class method1')
+
+class C(A) :
+    def method1(self) :
+        print('C class method1')
+        super().method1()
+
+class D(B,C) :
+    def method1(self) :
+        print('D class method1')
+        super().method1()
+        
+d = D()
+d.method1()
+
+c = C()
+c.method1()
